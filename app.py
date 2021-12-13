@@ -3,6 +3,7 @@
 
 # Dependencies
 from flask import Flask, request, jsonify,render_template
+import traceback
 import pandas as pd
 import numpy as np
 
