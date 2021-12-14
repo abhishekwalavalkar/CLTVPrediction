@@ -32,9 +32,10 @@ def input_web():
             print(score)
             output = (f"The CLTV score for this Customer ID {cust_id['cust_id']} is $ {str(round(score[0],2))}")
             print(output)
-            return jsonify({'Customer ID':cust_id['cust_id'],'CLTV': str(round(score[0],2))})
+            #return jsonify({'Customer ID':cust_id['cust_id'],'CLTV': str(round(score[0],2))})
+            return output
         else:
-            return jsonify({'Error':'Customer ID not available'})
+            return str('Error! Customer ID not available')
     except:
         return jsonify({'trace': traceback.format_exc()})
 
