@@ -2,6 +2,10 @@
 # coding: utf-8
 
 # Dependencies
+#!/usr/bin/env python
+# coding: utf-8
+
+# Dependencies
 from flask import Flask, request, jsonify,render_template
 import pandas as pd
 import numpy as np
@@ -28,9 +32,9 @@ def input_web():
             print(score)
             output = (f"The CLTV score for this Customer ID {cust_id['cust_id']} is $ {str(round(score[0],2))}")
             print(output)
-            return output
+            return jsonify({'Customer ID':cust_id['cust_id'],'CLTV': str(round(score[0],2))})
         else:
-            return str('Error! Customer ID not available')
+            return jsonify({'Error':'Customer ID not available'})
     except:
         return jsonify({'trace': traceback.format_exc()})
 
@@ -50,17 +54,13 @@ def predict_api():
             print(score)
             output = (f"The CLTV score for this Customer ID {cust_id['Customer ID']} is $ {str(round(score[0],2))}")
             print(output)
-            return output
+            return jsonify({'Customer ID':cust_id['Customer ID'],'CLTV': str(round(score[0],2))})
         else:
-            return str('Error! Customer ID not available')
+            return jsonify({'Error':'Customer ID not available'})
     except:
         return jsonify({'trace': traceback.format_exc()})
 
     
 if __name__ == '__main__':
     app.run(port=5000, debug=True,use_reloader=False)
-
-
-
-
-
+    
